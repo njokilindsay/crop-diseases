@@ -26,34 +26,36 @@ symptom(leaf_blotch,black_lesions).
 symptom(leaf_blotch,yellow_borders).
 
 %Plantpart affected by the disease
-effects(leaf_rust, leaves, brown_pustules).
-effects(leaf_rust, leaves, orange_lesions).
-effects(stripe_rust, leaves, orange_stripes).
-effects(septoria_leaf_blotch, leaves, black_spots).
-effects(fusarium_head_blight, grains, white_heads).
-effects(fusarium_head_blight, grains, shriveled_grains).
-effects(powdery_mildew, stems, powdery_spots).
-effects(powdery_mildew, leaves, powdery_spots).
-effects(tan_spot, leaves, dark_borders).
-effects(tan_spot, leaves, premature_aging).
-effects(common_bunt, spikes, foul_smell).
-effects(common_bunt, wheat_kernels, dark_spores).
-effects(leaf_blotch, leaves, black_lesions).
-effects(leaf_blotch, leaves, yellow_borders).
+affects(leaf_rust, leaves, brown_pustules).
+affects(leaf_rust, leaves, orange_lesions).
+affects(stripe_rust, leaves, orange_stripes).
+affects(septoria_leaf_blotch, leaves, black_spots).
+affects(fusarium_head_blight, grains, white_heads).
+affects(fusarium_head_blight, grains, shriveled_grains).
+affects(powdery_mildew, stems, powdery_spots).
+affects(powdery_mildew, leaves, powdery_spots).
+affects(tan_spot, leaves, dark_borders).
+affects(tan_spot, leaves, premature_aging).
+affects(common_bunt, spikes, foul_smell).
+affects(common_bunt, wheat_kernels, dark_spores).
+affects(leaf_blotch, leaves, black_spots).
+affects(leaf_blotch, leaves, yellow_borders).
 
 
 %Rules for diagnosing diseases
-diagnosis(Symptom) :-
+diagnose :-
     write('Enter symptom: '),
     read(Symptom),
     symptom(Disease, Symptom),
     write('The wheat is likely affected by '),write(Disease),nl.
 
-detection(Plantpart, Disease) :-
+detected_in(Plantpart) :-
     write('Enter Plantpart affected: '),
     read(Plantpart),
+    write('Enter Symptom: '),
+    read(Symptom),
     symptom(Disease, Symptom),
-    effects(Disease, Plantpart, Symptom),
+    affects(Disease, Plantpart, Symptom),
     write('The wheat is likely affected by '),write(Disease),nl.
 
 
